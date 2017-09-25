@@ -24,7 +24,10 @@
     <h2>할 일 목록</h2>
     <ul>
     <?php foreach($tasks as $task): ?>
-        <li><?=$task['name'];?></li>
+        <li>
+            <?=$task['name'];?>
+            <a href="/task/edit?id=<?=$task['id'];?>">수정</a>
+        </li>
     <?php endforeach;?>
     </ul>
 </section>
