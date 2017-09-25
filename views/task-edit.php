@@ -11,8 +11,8 @@
 </header>
 <section>
     <h2>할 일 수정하기</h2>
-    <form action="/task/update" method="post">
-        <input type="hidden" name="id" value="<?=$task['id'];?>">
+    <form action="/tasks/<?=$task['id'];?>" method="post">
+        <input type="hidden" name="_METHOD" value="PUT">
         <input type="text" name="name" value="<?=$task['name'];?>">
         <button type="submit">수정</button>
     </form>

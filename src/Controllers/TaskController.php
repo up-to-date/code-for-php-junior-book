@@ -34,7 +34,9 @@ class TaskController
 
     public function edit($request, $response)
     {
-        $id = $_GET['id'];
+        $uriSegments = explode('/', $request->getUri()->getPath());
+
+        $id = $uriSegments[2];
 
         $mysqli = new \mysqli('localhost', 'homestead', 'secret', 'pnb');
         $mysqli->set_charset("utf8mb4");
@@ -50,13 +52,16 @@ class TaskController
 
     public function update($request, $response)
     {
-        $id = $_POST['id'];
-        $name = $_POST['name'];
+        $uriSegments = explode('/', $request->getUri()->getPath());
+
+        $id = $uriSegments[2];
+
+        $inputs = $request->getParsedBody();
 
         $mysqli = new \mysqli('localhost', 'homestead', 'secret', 'pnb');
         $mysqli->set_charset("utf8mb4");
 
-        $mysqli->query("UPDATE tasks SET name = '{$name}' WHERE id = {$id}");
+        $mysqli->query("UPDATE tasks SET name = '{$inputs['name']}' WHERE id = {$id}");
 
         header('Location: /tasks');
         exit;
