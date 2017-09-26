@@ -25,7 +25,7 @@
     <ul>
     <?php foreach($tasks as $task): ?>
         <li>
-            <?=$task['name'];?>
+            <?=htmlentities($task['name'], ENT_QUOTES, 'UTF-8');?>
             <a href="/tasks/<?=$task['id'];?>/edit">수정</a>
         </li>
     <?php endforeach;?>

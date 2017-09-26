@@ -45,7 +45,7 @@ class TaskController
 
         $task = $result->fetch_assoc();
 
-        $response = $this->ci->view->render($response, "task-edit.php", ['task' => $task]);
+        $response = $this->ci->view->render($response, "task-edit.php", ['task' => $task, 'csrf' => $this->ci->csrf->getAll()]);
 
         return $response;
     }
@@ -56,12 +56,12 @@ class TaskController
 
         $id = $uriSegments[2];
 
-        $inputs = $request->getParsedBody();
+        $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
 
         $mysqli = new \mysqli('localhost', 'homestead', 'secret', 'pnb');
         $mysqli->set_charset("utf8mb4");
 
-        $mysqli->query("UPDATE tasks SET name = '{$inputs['name']}' WHERE id = {$id}");
+        $mysqli->query("UPDATE tasks SET name = '{$name}' WHERE id = {$id}");
 
         header('Location: /tasks');
         exit;

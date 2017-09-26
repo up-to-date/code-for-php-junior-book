@@ -13,6 +13,8 @@
     <h2>할 일 수정하기</h2>
     <form action="/tasks/<?=$task['id'];?>" method="post">
         <input type="hidden" name="_METHOD" value="PUT">
+        <input type="hidden" name="<?=$csrf['nameKey'];?>" value="<?=$csrf['name'];?>">
+        <input type="hidden" name="<?=$csrf['valueKey'];?>" value="<?=$csrf['value'];?>">
         <input type="text" name="name" value="<?=$task['name'];?>">
         <button type="submit">수정</button>
     </form>
