@@ -49,8 +49,7 @@ class TaskController
         return $response;
     }
 
-    public function update($request, $response)
-    {
+    public function update($request, $response) {
         $uriSegments = explode('/', $request->getUri()->getPath());
 
         $id = $uriSegments[2];
