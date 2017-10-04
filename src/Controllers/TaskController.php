@@ -7,7 +7,8 @@ class TaskController
 {
     protected $ci;
 
-    public function __construct(ContainerInterface $ci) {
+    public function __construct(ContainerInterface $ci)
+    {
         $this->ci = $ci;
     }
 
