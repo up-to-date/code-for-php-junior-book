@@ -7,7 +7,8 @@ class TaskController
 {
     protected $ci;
 
-    public function __construct(ContainerInterface $ci) {
+    public function __construct(ContainerInterface $ci)
+    {
         $this->ci = $ci;
     }
 
@@ -32,8 +33,7 @@ class TaskController
         return $response->withStatus(302)->withHeader('Location', '/tasks');
     }
 
-    public function edit($request, $response)
-    {
+    public function edit($request, $response) {
         $uriSegments = explode('/', $request->getUri()->getPath());
 
         $id = $uriSegments[2];
@@ -50,8 +50,7 @@ class TaskController
         return $response;
     }
 
-    public function update($request, $response)
-    {
+    public function update($request, $response) {
         $uriSegments = explode('/', $request->getUri()->getPath());
 
         $id = $uriSegments[2];
