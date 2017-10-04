@@ -4,7 +4,7 @@ namespace App;
 
 use Slim\Csrf\Guard;
 
-class Csrf  extends Guard
+class Csrf extends Guard
 {
     public function getAll()
     {

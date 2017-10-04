@@ -22,9 +22,13 @@ $container['logger'] = function ($container) {
 };
 
 // PDO
-$container['pdo'] = function($container) {
+$container['pdo'] = function ($container) {
     $settings = $container->get('settings')['db'];
-    return new PDO("mysql:host={$settings['host']};dbname={$settings['database']};charset=utf8", $settings['user'], $settings['pw']);
+    return new PDO(
+        "mysql:host={$settings['host']};dbname={$settings['database']};charset=utf8",
+        $settings['user'],
+        $settings['pw']
+    );
 };
 
 // Eloquent ORM
@@ -38,7 +42,7 @@ $container['db'] = function () use ($capsule) {
 };
 
 // TaskModel
-$container['taskModel'] = function() {
+$container['taskModel'] = function () {
     return new Task();
 };
 
