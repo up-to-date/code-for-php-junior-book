@@ -54,9 +54,9 @@ class TaskController
 
         $id = $uriSegments[2];
 
-        $inputs = $request->getParsedBody();
+        $name = $_POST['name'];
 
-        $this->ci->taskModel->update($id, ['name' => $inputs['name']]);
+        $this->ci->taskModel->update($id, ['name' => $name]);
 
         header('Location: /tasks');
         exit;
