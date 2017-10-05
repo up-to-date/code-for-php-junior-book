@@ -37,12 +37,7 @@ class TaskController
     {
         $id = $_GET['id'];
 
-        $mysqli = new \mysqli('localhost', 'homestead', 'secret', 'pnb');
-        $mysqli->set_charset("utf8mb4");
-
-        $result = $mysqli->query("SELECT * FROM tasks WHERE id={$id}");
-
-        $task = $result->fetch_assoc();
+        $task = $this->ci->taskModel->find($id);
 
         $response = $this->ci->view->render($response, "task-edit.php", ['task' => $task]);
 
@@ -54,10 +49,7 @@ class TaskController
         $id = $_POST['id'];
         $name = $_POST['name'];
 
-        $mysqli = new \mysqli('localhost', 'homestead', 'secret', 'pnb');
-        $mysqli->set_charset("utf8mb4");
-
-        $mysqli->query("UPDATE tasks SET name = '{$name}' WHERE id = {$id}");
+        $this->ci->taskModel->update($id, ['name' => $name]);
 
         header('Location: /tasks');
         exit;
