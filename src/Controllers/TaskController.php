@@ -33,34 +33,30 @@ class TaskController
         return $response->withStatus(302)->withHeader('Location', '/tasks');
     }
 
-    public function edit($request, $response) {
-        $uriSegments = explode('/', $request->getUri()->getPath());
+    public function edit($request, $response)
+    {
+        $uriPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+        $uriSegments = explode('/', $uriPath);
 
         $id = $uriSegments[2];
 
-        $mysqli = new \mysqli('localhost', 'homestead', 'secret', 'pnb');
-        $mysqli->set_charset("utf8mb4");
-
-        $result = $mysqli->query("SELECT * FROM tasks WHERE id={$id}");
-
-        $task = $result->fetch_assoc();
+        $task = $this->ci->taskModel->find($id);
 
         $response = $this->ci->view->render($response, "task-edit.php", ['task' => $task]);
 
         return $response;
     }
 
-    public function update($request, $response) {
-        $uriSegments = explode('/', $request->getUri()->getPath());
+    public function update($request, $response)
+    {
+        $uriPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+        $uriSegments = explode('/', $uriPath);
 
         $id = $uriSegments[2];
 
-        $inputs = $request->getParsedBody();
+        $name = $_POST['name'];
 
-        $mysqli = new \mysqli('localhost', 'homestead', 'secret', 'pnb');
-        $mysqli->set_charset("utf8mb4");
-
-        $mysqli->query("UPDATE tasks SET name = '{$inputs['name']}' WHERE id = {$id}");
+        $this->ci->taskModel->update($id, ['name' => $name]);
 
         header('Location: /tasks');
         exit;
