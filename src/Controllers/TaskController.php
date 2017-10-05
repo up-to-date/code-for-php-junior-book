@@ -35,7 +35,8 @@ class TaskController
 
     public function edit($request, $response)
     {
-        $uriSegments = explode('/', $request->getUri()->getPath());
+        $uriPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+        $uriSegments = explode('/', $uriPath);
 
         $id = $uriSegments[2];
 
@@ -48,7 +49,8 @@ class TaskController
 
     public function update($request, $response)
     {
-        $uriSegments = explode('/', $request->getUri()->getPath());
+        $uriPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+        $uriSegments = explode('/', $uriPath);
 
         $id = $uriSegments[2];
 
