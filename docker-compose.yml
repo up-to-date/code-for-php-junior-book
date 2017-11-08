@@ -1,18 +1,28 @@
-version: '2'
-
-volumes:
-    logs:
-        driver: local
-
+version: '3'
 services:
-    slim:
-        image: php:7-alpine
-        working_dir: /var/www
-        command: php -S 0.0.0.0:8080 -t public public/index.php
-        environment:
-            docker: "true"
-        ports:
-            - 8080:8080
-        volumes:
-            - .:/var/www
-            - logs:/var/www/logs
+  web:
+    build: ./docker/php
+    ports:
+      - 80:80
+    environment:
+      - VIRTUAL_HOST=app.dev
+    volumes:
+      - .:/codes/php-junior
+    depends_on:
+      - db
+  db:
+    build: ./docker/mysql
+    ports:
+      - 3306:3306
+    env_file:
+      - .env
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PW}
+    volumes:
+      - db:/var/lib/mysql
+      - ./docker/mysql/dump.sql:/docker-entrypoint-initdb.d/dump.sql
+volumes:
+  db:
