@@ -10,9 +10,10 @@ RUN wget wget https://raw.githubusercontent.com/composer/getcomposer.org/1b137f8
 
 RUN mv composer.phar /usr/local/bin/composer
 
-COPY app.dev.conf /etc/apache2/sites-available/app.dev.conf
+COPY dev.myapp.com.conf /etc/apache2/sites-available/dev.myapp.com.conf
 
-RUN a2ensite app.dev
+RUN a2ensite dev.myapp.com
+RUN a2enmod rewrite
 
 RUN mkdir /codes; mkdir /codes/php-junior
 
