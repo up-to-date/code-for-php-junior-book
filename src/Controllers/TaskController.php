@@ -55,7 +55,7 @@ class TaskController
 
         $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
 
-        $this->ci->taskModel->update($id, ['name' => $name]);
+        $this->ci->taskModel->modify($id, ['name' => $name]);
 
         header('Location: /tasks');
         exit;
