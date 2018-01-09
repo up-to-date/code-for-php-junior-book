@@ -9,7 +9,7 @@ class Task extends Model
 
     public function find($id)
     {
-        $mysqli = new \mysqli('localhost', 'homestead', 'secret', 'pnb');
+        $mysqli = new \mysqli('db', 'homestead', 'secret', 'pnb');
         $mysqli->set_charset("utf8mb4");
 
         $result = $mysqli->query("SELECT * FROM tasks WHERE id={$id}");
@@ -17,9 +17,9 @@ class Task extends Model
         return $result->fetch_assoc();
     }
 
-    public function update($id, $data)
+    public function modify($id, $data)
     {
-        $mysqli = new \mysqli('localhost', 'homestead', 'secret', 'pnb');
+        $mysqli = new \mysqli('db', 'homestead', 'secret', 'pnb');
         $mysqli->set_charset("utf8mb4");
 
         $mysqli->query("UPDATE tasks SET name = '{$data['name']}' WHERE id = {$id}");
