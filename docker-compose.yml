@@ -5,7 +5,7 @@ services:
     ports:
       - 8080:80
     environment:
-      - VIRTUAL_HOST=app.dev
+      - VIRTUAL_HOST=dev.myapp.com
     volumes:
       - .:/codes/php-junior
     depends_on:
