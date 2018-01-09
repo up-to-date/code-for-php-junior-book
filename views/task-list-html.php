@@ -26,7 +26,7 @@
     <?php foreach($tasks as $task): ?>
         <li>
             <?=$task['name'];?>
-            <a href="/tasks/<?=$task['id'];?>/edit">수정</a>
+            <a href="/tasks/<?=$task['id'];?>/edit"><button>수정</button></a>
         </li>
     <?php endforeach;?>
     </ul>

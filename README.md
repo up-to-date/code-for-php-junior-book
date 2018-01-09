@@ -1,26 +1,14 @@
-# Slim Framework 3 Skeleton Application
+도서 바쁜 팀장님 대신 알려주는 신입 PHP 개발자 안내서의 소스 코드입니다.
 
-Use this skeleton application to quickly setup and start working on a new Slim Framework 3 application. This application uses the latest Slim 3 with the PHP-View template renderer. It also uses the Monolog logger.
+## 브랜치 안내
 
-This skeleton application was built for Composer. This makes setting up a new Slim Framework application quick and easy.
-
-## Install the Application
-
-Run this command from the directory in which you want to install your new Slim Framework application.
-
-    php composer.phar create-project slim/slim-skeleton [my-app-name]
-
-Replace `[my-app-name]` with the desired directory name for your new application. You'll want to:
-
-* Point your virtual host document root to your new application's `public/` directory.
-* Ensure `logs/` is web writeable.
-
-To run the application in development, you can also run this command. 
-
-	php composer.phar start
-
-Run this command to run the test suite
-
-	php composer.phar test
-
-That's it! Now go build something cool.
+| 브랜치명 | 설명 | 
+| --- | --- |
+| master | 이신입이 처음 받게 되는 코드 |
+| 05-lee | 이신입이 작성한 코드 |
+| 05-end | 5장 내용 반영 |
+| 06-lee | 이신입이 작성한 코드 |
+| 06-end | 6장 내용 반영 |
+| 07-lee | 이신입이 작성한 코드 |
+| 07-end | 6장 내용 반영 |
+| 08-lee | 이신입이 작성한 코드 |
