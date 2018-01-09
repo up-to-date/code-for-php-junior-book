@@ -49,7 +49,7 @@ class TaskController
         $id = $_POST['id'];
         $name = $_POST['name'];
 
-        $this->ci->taskModel->update($id, ['name' => $name]);
+        $this->ci->taskModel->modify($id, ['name' => $name]);
 
         header('Location: /tasks');
         exit;
