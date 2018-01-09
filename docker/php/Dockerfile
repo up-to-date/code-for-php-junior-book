@@ -4,7 +4,9 @@ RUN apt-get update
 RUN apt-get install wget git zip -y
 
 RUN docker-php-ext-install pdo_mysql \
-    && docker-php-ext-enable pdo_mysql
+    && docker-php-ext-enable pdo_mysql \
+    && docker-php-ext-install mysqli \
+    && docker-php-ext-enable mysqli
 
 RUN wget wget https://raw.githubusercontent.com/composer/getcomposer.org/1b137f8bf6db3e79a38a5bc45324414a6b1f9df2/web/installer -O - -q | php -- --quiet
 
