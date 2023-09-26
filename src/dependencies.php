@@ -1,4 +1,5 @@
 <?php
+
 // 의존성 주입 설정
 
 use App\Csrf;
@@ -32,7 +33,7 @@ $container['pdo'] = function ($container) {
 };
 
 // Eloquent ORM
-$capsule = new \Illuminate\Database\Capsule\Manager;
+$capsule = new \Illuminate\Database\Capsule\Manager();
 $capsule->addConnection($container['settings']['db']);
 
 $capsule->setAsGlobal();
