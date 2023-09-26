@@ -1,4 +1,4 @@
-FROM php:7.0-apache
+FROM php:apache
 
 RUN apt-get update
 RUN apt-get install wget git zip -y
